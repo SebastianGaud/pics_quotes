@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:pics_quotes/widgets/favorite.dart';
 
 class PicListElement extends StatelessWidget {
   final String imgUrl;
   final String captionText;
+  final Function clickFavorite;
+
   const PicListElement(
-      {Key? key, required this.imgUrl, required this.captionText})
+      {Key? key,
+      required this.imgUrl,
+      required this.captionText,
+      required this.clickFavorite})
       : super(key: key);
 
   @override
@@ -12,7 +18,7 @@ class PicListElement extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: Card(
-        elevation: 30,
+        elevation: 40,
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -33,6 +39,11 @@ class PicListElement extends StatelessWidget {
               ),
               bottom: 10,
               left: 10,
+            ),
+            Positioned(
+              child: Favorite(click: this.clickFavorite),
+              top: 10,
+              right: 10,
             )
           ],
         ),

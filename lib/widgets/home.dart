@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:pics_quotes/models/pic_quote_model.dart';
 import 'package:pics_quotes/widgets/pic_list.dart';
 
 import 'package:http/http.dart' show get;
@@ -14,19 +15,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-  Future<Map<String, String>> getPhoto() async {
+  Future<PicQuote> getPhoto() async {
     var res = await get(Uri.parse('https://zenquotes.io/api/random'));
     var data = jsonDecode(res.body);
     var rnd = Random();
     var i = rnd.nextInt(50);
-    return {
-      'imgUrl': 'https://picsum.photos/${400+i}/${300+i}',
-      'captionText': data[0]['q']
-    };
+    return PicQuote.withId(
+        quote: data[0]['q'],
+        imageUrl: 'https://picsum.photos/${400 + i}/${300 + i}');
   }
 
-  final List<Map<String, String>> _list = [];
+  final List<PicQuote> _list = [];
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +51,13 @@ class _HomeState extends State<Home> {
           width: 80,
         ),
         body: PicList(
+          clickFavorite: ((picQuoteGuid) {
+            for (var item in _list) {
+              if (item.id == picQuoteGuid) {
+                item.isFavorite = true;
+              }
+            }
+          }),
           elements: _list,
         ));
   }
