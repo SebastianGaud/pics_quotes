@@ -14,7 +14,6 @@ class _FavoriteState extends State<Favorite> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _isFavorite = this.widget.isFavorite;
   }

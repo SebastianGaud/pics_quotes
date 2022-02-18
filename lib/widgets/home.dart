@@ -69,19 +69,22 @@ class _HomeState extends State<Home> {
             : Container(),
         body: _currentIndex == 0
             ? PicList(
-                clickFavorite: ((picQuoteGuid) {
-                  setState(() {
-                    for (var item in _list) {
-                      if (item.id == picQuoteGuid) {
-                        item.isFavorite = true;
-                      }
-                    }
-                  });
-                }),
+                clickFavorite: setFavoriteFlag,
                 elements: _list,
               )
             : PicList(
                 elements: favList,
-                clickFavorite: (_) {}));
+                clickFavorite: setFavoriteFlag,
+              ));
+  }
+
+  void setFavoriteFlag(picQuoteGuid) {
+    setState(() {
+      for (var item in _list) {
+        if (item.id == picQuoteGuid) {
+          item.isFavorite = !item.isFavorite!;
+        }
+      }
+    });
   }
 }

@@ -43,7 +43,10 @@ class PicListElement extends StatelessWidget {
               left: 10,
             ),
             Positioned(
-              child: Favorite(click: this.clickFavorite, isFavorite: this.isFavorite,),
+              child: Favorite(
+                click: this.clickFavorite,
+                isFavorite: this.isFavorite,
+              ),
               top: 10,
               right: 10,
             )

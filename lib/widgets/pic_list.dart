@@ -16,6 +16,7 @@ class PicList extends StatelessWidget {
     for (var i = 0; i < elements.length; i++) {
       var e = elements[i];
       widgets.add(PicListElement(
+        key: Key(e.id!),
         imgUrl: e.imageUrl,
         captionText: e.quote,
         isFavorite: e.isFavorite ?? false,
