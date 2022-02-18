@@ -12,18 +12,28 @@ class PicListElement extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: Card(
+        elevation: 30,
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20))),
-        // child: Column(
-        //   children: [
-        //   ],
-        // ),
         child: Stack(
+          alignment: AlignmentDirectional.center,
           children: [
             Image.network(imgUrl, fit: BoxFit.cover),
-            Positioned(child: 
-            Text(captionText), bottom: 10, left: 10,)
+            Positioned(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width - 50,
+                child: Text(
+                  captionText,
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ),
+              bottom: 10,
+              left: 10,
+            )
           ],
         ),
       ),
