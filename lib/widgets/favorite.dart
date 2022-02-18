@@ -2,14 +2,22 @@ import 'package:flutter/material.dart';
 
 class Favorite extends StatefulWidget {
   final Function click;
-  const Favorite({Key? key, required this.click}) : super(key: key);
+  final bool isFavorite;
+  const Favorite({Key? key,required this.click, this.isFavorite = false}) : super(key: key);
 
   @override
   _FavoriteState createState() => _FavoriteState();
 }
 
 class _FavoriteState extends State<Favorite> {
-  bool _isFavorite = false;
+  late bool _isFavorite;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _isFavorite = this.widget.isFavorite;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +27,7 @@ class _FavoriteState extends State<Favorite> {
           _isFavorite = !_isFavorite;
         });
         
-        this.widget.click;
+        this.widget.click();
       },
       child: Icon(
         Icons.favorite,

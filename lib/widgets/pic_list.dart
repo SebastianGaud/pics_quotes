@@ -18,6 +18,7 @@ class PicList extends StatelessWidget {
       widgets.add(PicListElement(
         imgUrl: e.imageUrl,
         captionText: e.quote,
+        isFavorite: e.isFavorite ?? false,
         clickFavorite: (){
           this.clickFavorite(e.id!);
         },

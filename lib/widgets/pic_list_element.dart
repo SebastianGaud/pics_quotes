@@ -4,12 +4,14 @@ import 'package:pics_quotes/widgets/favorite.dart';
 class PicListElement extends StatelessWidget {
   final String imgUrl;
   final String captionText;
+  final bool isFavorite;
   final Function clickFavorite;
 
   const PicListElement(
       {Key? key,
       required this.imgUrl,
       required this.captionText,
+      required this.isFavorite,
       required this.clickFavorite})
       : super(key: key);
 
@@ -41,7 +43,7 @@ class PicListElement extends StatelessWidget {
               left: 10,
             ),
             Positioned(
-              child: Favorite(click: this.clickFavorite),
+              child: Favorite(click: this.clickFavorite, isFavorite: this.isFavorite,),
               top: 10,
               right: 10,
             )
