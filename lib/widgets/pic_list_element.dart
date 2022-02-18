@@ -21,7 +21,7 @@ class PicListElement extends StatelessWidget {
         // ),
         child: Stack(
           children: [
-            Image.network(imgUrl),
+            Image.network(imgUrl, fit: BoxFit.cover),
             Positioned(child: 
             Text(captionText), bottom: 10, left: 10,)
           ],

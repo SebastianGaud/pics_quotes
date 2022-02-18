@@ -16,10 +16,8 @@ class PicList extends StatelessWidget {
           PicListElement(imgUrl: e['imgUrl']!, captionText: e['captionText']!));
     }
 
-    return SingleChildScrollView(
-      child: Column(
-        children: widgets,
-      ),
+    return ListView(
+      children: widgets,
     );
   }
 }

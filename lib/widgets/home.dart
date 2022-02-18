@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:pics_quotes/widgets/body.dart';
 import 'package:pics_quotes/widgets/pic_list.dart';
 
 import 'package:http/http.dart' show get;
@@ -17,13 +16,13 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   Future<Map<String, String>> getPhoto() async {
-    var rnd = Random();
-    var photoId = rnd.nextInt(5000);
-    var res = await get(Uri.parse('https://jsonplaceholder.typicode.com/photos/$photoId'));
+    var res = await get(Uri.parse('https://zenquotes.io/api/random'));
     var data = jsonDecode(res.body);
+    var rnd = Random();
+    var i = rnd.nextInt(50);
     return {
-      'imgUrl': data['url'],
-      'captionText': data['title']
+      'imgUrl': 'https://picsum.photos/${400+i}/${300+i}',
+      'captionText': data[0]['q']
     };
   }
 
